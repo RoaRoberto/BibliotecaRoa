@@ -29,13 +29,13 @@ namespace Api_Libreria.Context
            });
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
+            //if (!optionsBuilder.IsConfigured)
+            //{
 
-                optionsBuilder
-                    .UseLoggerFactory(ConsoleLoggerFactory)
-                    .UseOracle("connection string to test db.");
-            }
+            //    optionsBuilder
+            //        .UseLoggerFactory(ConsoleLoggerFactory)
+            //        .UseOracle("connection string to test db.");
+            //}
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

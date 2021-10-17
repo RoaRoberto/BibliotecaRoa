@@ -27,9 +27,11 @@ namespace Api_Libreria.Controllers
 
         // GET: api/<LibroController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ObjectResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var libros = _service.GetLibros();
+            return Ok(libros);
+            
         }
 
         // GET api/<LibroController>/5
