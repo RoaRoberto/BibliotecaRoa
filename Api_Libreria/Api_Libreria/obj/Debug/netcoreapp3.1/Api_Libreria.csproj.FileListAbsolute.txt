@@ -68,3 +68,4 @@ C:\Users\contr\source\repos\LibreriaProject\Api_Libreria\Api_Libreria\bin\Debug\
 C:\Users\contr\source\repos\LibreriaProject\Api_Libreria\Api_Libreria\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\contr\source\repos\LibreriaProject\Api_Libreria\Api_Libreria\obj\Debug\netcoreapp3.1\Api_Libreria.csproj.CoreCompileInputs.cache
 C:\Users\contr\source\repos\LibreriaProject\Api_Libreria\Api_Libreria\obj\Debug\netcoreapp3.1\Api_Libreria.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\contr\source\repos\LibreriaProject\Api_Libreria\Api_Libreria\obj\Debug\netcoreapp3.1\Api_Libreria.csprojAssemblyReference.cache

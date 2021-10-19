@@ -12,13 +12,13 @@ namespace Api_Libreria.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LibroController : ControllerBase
+    public class AutorController : ControllerBase
     {
 
         private ILogger _logger;
-        private ILibroService _service;
+        private IAutorService _service;
 
-        public LibroController(ILibroService service, ILogger<LibroController> logger)
+        public AutorController(IAutorService service, ILogger<AutorController> logger)
         {
             _service = service;
             _logger = logger;
@@ -30,8 +30,8 @@ namespace Api_Libreria.Controllers
         {
             try
             {
-                var libros = _service.GetLibros();
-                return Ok(libros);
+                var Autors = _service.GetAutores();
+                return Ok(Autors);
             }
             catch (Exception ex)
             {
@@ -46,8 +46,8 @@ namespace Api_Libreria.Controllers
         {
             try
             {
-                var libro = _service.GetLibroByiD(id);
-                return Ok(libro);
+                var Autor = _service.GetAutorByiD(id);
+                return Ok(Autor);
             }
             catch (Exception ex)
             {
@@ -57,11 +57,11 @@ namespace Api_Libreria.Controllers
         }
 
         [HttpPost]
-        public ObjectResult Post([FromBody] LibroEntity entity)
+        public ObjectResult Post([FromBody] AutorEntity entity)
         {
             try
             {
-                var newEntity = _service.AddLibro(entity);
+                var newEntity = _service.AddAutor(entity);
                 return Ok(newEntity);
             }
             catch (Exception ex)
@@ -72,12 +72,12 @@ namespace Api_Libreria.Controllers
         }
 
         [HttpPut("{id}")]
-        public ObjectResult Put(int id, [FromBody] LibroEntity entity)
+        public ObjectResult Put(int id, [FromBody] AutorEntity entity)
         {
             try
             {
-                var libros = _service.UpdateLibro(id,entity);
-                return Ok(libros);
+                var Autors = _service.UpdateAutor(id,entity);
+                return Ok(Autors);
             }
             catch (Exception ex)
             {
@@ -91,7 +91,7 @@ namespace Api_Libreria.Controllers
         {
             try
             {
-                var respuesta = _service.DeleteLibro(id);
+                var respuesta = _service.DeleteAutor(id);
                 return Ok(respuesta);
             }
             catch (Exception ex)

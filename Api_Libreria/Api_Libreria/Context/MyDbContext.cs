@@ -17,7 +17,11 @@ namespace Api_Libreria.Context
             : base(options)
         {
         }
-        public DbSet<LibroEntity> libros { get; set; }
+
+        // relacion de entidades
+        public DbSet<LibroEntity> Libros { get; set; }
+        public DbSet<CiudadEntity> Ciudades { get; set; }
+        public DbSet<AutorEntity> Autores { get; set; }
 
         public static readonly ILoggerFactory ConsoleLoggerFactory
            = LoggerFactory.Create(builder =>
@@ -29,17 +33,22 @@ namespace Api_Libreria.Context
            });
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //if (!optionsBuilder.IsConfigured)
-            //{
 
-            //    optionsBuilder
-            //        .UseLoggerFactory(ConsoleLoggerFactory)
-            //        .UseOracle("connection string to test db.");
-            //}
+            optionsBuilder
+               .UseLoggerFactory(ConsoleLoggerFactory);
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("SYSTEM");
 
+            //modelBuilder.Entity<LibroEntity>().ToTable("LIBRO")
+            //    .HasKey(r => r.Id).HasName("ID");
+
+
+
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

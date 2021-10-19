@@ -30,8 +30,17 @@ namespace Api_Libreria
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<MyDbContext>(item => item.UseOracle(Configuration.GetConnectionString("myconn")));
+
+           
+            services.AddDbContext<MyDbContext>(item =>
+            item.UseOracle(Configuration.GetConnectionString("myconn"), options => options
+    .UseOracleSQLCompatibility("11"))
+
+            );
             services.AddTransient<ILibroService, LibroService>();
+            services.AddTransient<IAutorService, Autoreservice>();
+            services.AddTransient<ICiudadService, CiudadService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
