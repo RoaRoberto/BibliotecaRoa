@@ -1,0 +1,95 @@
+<div class="container">
+  <div style="height: 90px;"></div>
+  <div class="row">
+    <ngb-toast *ngIf="show" [header]="message.title" [autohide]="false" >
+      {{message.body}}
+    </ngb-toast>
+  </div>
+
+
+  <div class="reglist" *ngIf="libros">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Titulo</th>
+          <th>Año</th>
+          <th>Genero</th>
+          <th>Nro de paginas</th>
+          <th>Autor</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of libros; let i = index">
+          <th>{{ libro.id }}</th>
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.anho }}</td>
+          <td>{{ libro.genero}}</td>
+          <td>{{ libro.nroPaginas }}</td>
+          <td>{{ libro.autor.nombreCompleto }}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(libro.id)">Editar</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(libro.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">Nuevo</button>
+    </div>
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="titulo-input" class="col-2 col-form-label">Titulo</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.titulo" name="titulo">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="anho-input" class="col-2 col-form-label">Año</label>
+        <div class="col-10">
+          <input class="form-control" type="number" [(ngModel)]="regModel.anho" name="anho">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="genero-input" class="col-2 col-form-label">Genero</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.genero" name="genero">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="nroPaginas-input" class="col-2 col-form-label">Nro de paginas</label>
+        <div class="col-10">
+          <input class="form-control" type="number" [(ngModel)]="regModel.nroPaginas" name="nroPaginas">
+        </div>
+      </div>
+      <!-- <div class="form-group row">
+        <label for="autorId-input" class="col-2 col-form-label">Autor Id</label>
+        <div class="col-10">
+          <input class="form-control" type="number" [(ngModel)]="regModel.autorId" name="autorId">
+        </div>
+      </div> -->
+
+      <div class="form-group row">
+        <label for="city-input" class="col-2 col-form-label">Autor</label>
+        <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
+          <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="autor"
+            ngbDropdownToggle>{{regModel.autor.nombreCompleto}}</button>
+          <div class="col-12" ngbDropdownMenu aria-labelledby="dropdownManual">
+            <button type="button" class="dropdown-item" *ngFor="let autor of autores"
+              (click)="onChangeAutor(autor)">{{autor.nombreCompleto}}</button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+</div>
+

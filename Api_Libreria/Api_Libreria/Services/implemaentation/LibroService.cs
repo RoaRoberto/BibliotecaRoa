@@ -1,6 +1,7 @@
 ﻿using Api_Libreria.Context;
 using Api_Libreria.Model;
 using Api_Libreria.Services.interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace Api_Libreria.Services.implemaentation
 
         public List<LibroEntity> GetLibros()
         {
-            return _myDbContext.Libros.ToList();
+            return _myDbContext.Libros.Include(b => b.Autor).ToList();
         }
 
         public LibroEntity GetLibroByiD(int id)

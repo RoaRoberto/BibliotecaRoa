@@ -1,0 +1,88 @@
+<div class="container">
+  <div style="height: 90px;"></div>
+  <div class="row">
+    <ngb-toast *ngIf="show" [header]="message.title" [autohide]="false" >
+      {{message.body}}
+    </ngb-toast>
+  </div>
+
+
+  <div class="reglist" *ngIf="autores">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre Completo</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Email</th>          
+          <th>Ciudad</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autor of autores; let i = index">
+          <th>{{ autor.id }}</th>
+          <td>{{ autor.nombreCompleto }}</td>
+          <td>{{ autor.fechaNacimiento }}</td>
+          <td>{{ autor.email}}</td>
+          <td>{{ autor.ciudad.nombre }}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(autor.id)">Editar</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(autor.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">Nuevo</button>
+    </div>
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="NombreCompleto-input" class="col-2 col-form-label">Nombre Completo</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.nombreCompleto" name="NombreCompleto">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="fechaNacimiento-input" class="col-2 col-form-label">Fecha de Nacimiento</label>
+        <div class="col-3 input-group">
+          <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="fechaNacimiento" [(ngModel)]="regModel.dob" ngbDatepicker #dob="ngbDatepicker">
+          <button class="input-group-addon" (click)="dob.toggle()" type="button">
+            <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+          </button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="email-input" class="col-2 col-form-label">Email</label>
+        <div class="col-10">
+          <input class="form-control" type="email" [(ngModel)]="regModel.email" name="email">
+        </div>
+      </div>
+      
+      
+
+      <div class="form-group row">
+        <label for="city-input" class="col-2 col-form-label">Ciudad</label>
+        <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
+          
+          <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="ciudad"
+            ngbDropdownToggle>{{regModel.ciudad.nombre}}</button>
+
+          <div class="col-12" ngbDropdownMenu aria-labelledby="dropdownManual">
+            <button type="button" class="dropdown-item" *ngFor="let ciudad of ciudades"
+              (click)="onChangeCiudad(ciudad)">{{ciudad.nombre}}</button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+</div>
+

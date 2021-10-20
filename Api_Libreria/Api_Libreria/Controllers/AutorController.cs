@@ -61,6 +61,7 @@ namespace Api_Libreria.Controllers
         {
             try
             {
+                entity.Ciudad = null;
                 var newEntity = _service.AddAutor(entity);
                 return Ok(newEntity);
             }
@@ -76,6 +77,7 @@ namespace Api_Libreria.Controllers
         {
             try
             {
+                entity.Ciudad = null;
                 var Autors = _service.UpdateAutor(id,entity);
                 return Ok(Autors);
             }

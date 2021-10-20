@@ -1,6 +1,7 @@
 ﻿using Api_Libreria.Context;
 using Api_Libreria.Model;
 using Api_Libreria.Services.interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace Api_Libreria.Services.implemaentation
 
         public List<AutorEntity> GetAutores()
         {
-            return _myDbContext.Autores.ToList();
+            return _myDbContext.Autores.Include(b => b.Ciudad).ToList();
         }
 
         public AutorEntity GetAutorByiD(int id)

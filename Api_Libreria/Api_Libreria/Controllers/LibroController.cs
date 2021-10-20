@@ -61,6 +61,7 @@ namespace Api_Libreria.Controllers
         {
             try
             {
+                entity.Autor = null;
                 var newEntity = _service.AddLibro(entity);
                 return Ok(newEntity);
             }
@@ -76,6 +77,7 @@ namespace Api_Libreria.Controllers
         {
             try
             {
+                entity.Autor = null;
                 var libros = _service.UpdateLibro(id,entity);
                 return Ok(libros);
             }
