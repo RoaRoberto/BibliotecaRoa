@@ -9,14 +9,16 @@
 
 > Challenge Tecnico Nexos
 
-### 🏠 Homepage
+![probando el proyecto](documentacion/img/prueba.gif)
+
+### 🏠 Descripción
 
 Web Api que permite administrar Libros y Autores
 
 * DotnetCore 3.1
 * Oracle Entity Framework core 5.2
 
-Front en Angular que permite interactuar con el Web Api y con el Usuario Final
+FrontEnd Angular que permite interactuar con el Web Api y con el Usuario Final
 
 * Angular CLI: 12.2.10
 * Node: 12.18.4
@@ -102,9 +104,6 @@ Ciudades
 ```sh
  Url Base https://localhost:44336/api/ciudad
  
- * Post  
- * Put
- * Delete
  * Get
  * GetById
 ```

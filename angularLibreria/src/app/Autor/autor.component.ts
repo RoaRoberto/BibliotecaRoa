@@ -132,7 +132,15 @@ export class AutorComponent implements OnInit {
   }
 
   getFecha(fecha: NgbDateStruct): string {
-    return fecha.year + "-" + fecha.month + "-" + fecha.day;
+    let dia = '00';
+    let mes = '00';
+    if (fecha.month < 10) {
+      mes = '0' + fecha.month;
+    }
+    if (fecha.day < 10) {
+      dia = '0' + fecha.day;
+    }
+    return fecha.year + "-" + mes + "-" + dia;
   }
 
 }
